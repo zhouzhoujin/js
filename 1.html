@@ -1,0 +1,65 @@
+<html>
+<head>
+</head>
+
+<body>
+
+<script>
+    // var today = new Date();   //获取当天日期
+    // var year = today.getFullYear();   //获取当天年份
+    // if((year %4 == 0 ||year%100 != 0) && year%400 == 0 ){
+    //     alert("该年是闰年");
+    // }else{
+    //     alert("该年不是闰年");
+    // }
+    // var age = window.prompt("请输入你的年龄");
+    // if(age<14){
+    //     alert("儿童");
+    // }else if(14<=age || age<24){
+    //     alert("青少年");
+    // }else if(24<age || age<40){
+    //     alert("青年");
+    // }else if(40<=age || age<60){
+    //     alert("中年");
+    // }else if(60<=age ){
+    //     alert("老年");
+   //
+   //  var num = window.prompt("请输入");
+   //  function sum(num) {
+   //     if(num == 1){
+   //         return 1;
+   //     }
+   //     else{
+   //         return num * sum(num-1)
+   //     }
+   // }
+   //  var sum = sum(num);
+   //  alert('num='+sum);
+   //  var num = window.prompt("请输入");
+   //  function sum(num) {
+   //      if(num == 1){
+   //          return 1;
+   //      } else{
+   //          return num * sum(num-1)
+   //      }
+   //  }
+   //  var sum = sum(num)+sum(num-1)+sum(num-2)+sum(num-3)+sum(num-4)+sum(num-5)+sum(num-6)+sum(num-7)+sum(num-8)+sum(num-9);
+   //  alert('num='+sum);
+    var num = 10
+    function sum(num) {
+        if(num == 1){
+            return 1;
+        } else{
+            return num * sum(num-1)
+        }
+    }
+    var a;
+    for(num;num>0;num--){
+
+        a = a + sum(num);
+    }
+    console.log('num='+sum);
+</script>
+
+</body>
+</html>
