@@ -45,20 +45,68 @@
    //  }
    //  var sum = sum(num)+sum(num-1)+sum(num-2)+sum(num-3)+sum(num-4)+sum(num-5)+sum(num-6)+sum(num-7)+sum(num-8)+sum(num-9);
    //  alert('num='+sum);
-    var num = 10
-    function sum(num) {
-        if(num == 1){
-            return 1;
-        } else{
-            return num * sum(num-1)
+
+    // function sumf(num) {
+    //     if(num == 1){
+    //         return 1;
+    //     } else{
+    //         return num * sumf(num-1)
+    //     }
+    // }
+    // var num = window.prompt("Please");
+    // alert(Funsum(num));
+    // function Funsum(num) {
+    //     var sum = 0;
+    //     for(var i = 1;i<=num;i++){
+    //         sum = sum + sumf(i);
+    //     }
+    //     return sum;
+    // }
+    // var num = 5;
+    // function Triangle(num) {
+    //         for( var i = 1;i<=num;i++){
+    //             for(var k = i;k<=num-1;k++) {
+    //                 document.write('&nbsp;')
+    //             }
+    //             for( var j=1;j<=i;j++){
+    //
+    //                 document.write('* '+ ' ');
+    //                 if(j == i){
+    //                     document.write('<br><br>');
+    //             }
+    //         }
+    //     }
+    // // }
+    for(var k=1000;k<=9999;k++){
+        var a,b,c;
+        c = Math.floor(k/1000);
+        a = Math.floor((k-c*1000)/100);
+        b = Math.floor((k-c*1000-a*100)/10);
+        if((k % 13 == 0) && (a + b == c)){
+            console.log(k);
         }
     }
-    var a;
-    for(num;num>0;num--){
+    // var lucky =  '';
+    // for(var i = 0;i<7;i++){
+    //     lucky =lucky + Math.floor(Math.random() * 37) + ' ';
+    //
+    // }
+    // console.log(lucky);
+    // function fn(x) {
+    //    return 4 * x * x + 3 * x + 2;
+    // }
+    // var x = window.prompt("Please:");
+    // fn(x);
+    // alert(fn(x));
+    // function Min(x, y) {
+    //     return   x<y ? y:x;
+    // }
+    // var x = window.prompt("please x:");
+    // var y = window.prompt("please y:");
+    // alert(Min(x,y));
 
-        a = a + sum(num);
-    }
-    console.log('num='+sum);
+
+
 </script>
 
 </body>
