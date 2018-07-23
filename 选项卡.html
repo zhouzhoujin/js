@@ -39,6 +39,9 @@
             display: none;
             position: absolute;
             top: 44px;
+            background: pink;
+            text-align: center;
+            line-height: 256px;
         }
 
     </style>
@@ -58,24 +61,21 @@
     </div>
 
     <script>
-
-            var oBox=document.getElementById('box');
-            var aLi=oBox.getElementsByTagName('li');
-            var oCon=document.getElementById('content');
-            var aDiv=oCon.getElementsByTagName('div');
-
-            for(var i=0;i<aLi.length;i++){
-                aLi[i].index=i;   //为每个li添加对应的索引index
-                aLi[i].onclick=function(){   //循环为每个li添加onclick事件
-                    for(var i=0;i<aLi.length;i++){
-                        aLi[i].className='';  //循环清空li样式
-                        aDiv[i].style.display='none';  //循环隐藏所有div
-                    }
-                    this.className='first';  //当前点击的元素样式变成active
-                    aDiv[this.index].style.display='block';    //this.index 获取当前li对应的索引
+        var oBox = document.getElementById('box');
+        var aLi  = oBox.getElementsByTagName('li');
+        var oCon = document.getElementById('content');//为什么用了class后下面不能引用div？
+        var oDiv = oCon.getElementsByTagName('div');
+        for(var i = 0;i<aLi.length;i++){
+            aLi[i].index = i;//索引？
+            aLi[i].onclick=function(){
+                for(var i = 0;i<aLi.length;i++){
+                    aLi[i].className = '';
+                    oDiv[i].style.display = 'none';
                 }
+                this.className = 'first';
+                oDiv[this.index].style.display = 'block';
             }
-
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        #container{
+            position: relative;
+            width: 400px;
+            height: 301px;
+        }
+        #container div{
+            position: absolute;
+            z-index: -1;
+        }
+        #container img{
+            width: 400px;
+        }
+        #container .nav{
+            margin-left: 350px;
+            margin-top: 280px;
+        }
+        #container .nav li{
+            width: 14px;
+            height: 14px;
+            font-size: 14px;
+            color: white;
+            background: black;
+            border: 1px solid;
+            border-radius: 50%;
+            line-height:14px ;
+            text-align: center;
+            float: left;
+            cursor: pointer;
+        }
+        #container .nav-l{
+            margin-left:5px;
+            margin-top: -20px;
+        }
+        #container .nav-l li{
+            width: 14px;
+            height: 14px;
+            font-size: 14px;
+            color: white;
+            background: black;
+            border: 1px solid;
+            border-radius: 50%;
+            line-height:14px ;
+            text-align: center;
+            position: absolute;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #container .nav-l li:nth-child(2){
+            margin-left: 18px;
+        }
+        #container .first{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="first"><img src="img/img1.jpg" alt=""></div>
+        <div><img src="img/img2.jpg" alt=""></div>
+        <div><img src="img/img3.jpg" alt=""></div>
+        <ul class="nav">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <ul class="nav-l">
+            <li>&lt;</li>
+            <li>&gt;</li>
+        </ul>
+    </div>
+    <script>
+        var oCon = document.getElementById('container');
+        var oDiv = oCon.getElementsByTagName('div');
+        var aUl = oCon.getElementsByTagName('ul');
+        var aLi = aUl[0].getElementsByTagName('li');
+        var aLi2 = aUl[1].getElementsByTagName('li');
+        for(var i=0;i<aLi.length;i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function () {
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    oDiv[i].style.display = 'none';
+                }
+                oDiv[this.index].style.display = 'block';
+            }
+        }
+
+        oDiv = setInterval(function(){
+            if（a>=5）{
+                clearInterval(timer);清除定时器
+                console.log（a++）；
+            }
+        },1000ms);
+        var oCon1 = document.getElementById('container');
+        var oClass = oCon1.getElementsByClassName('first');
+        aLi2[0].onclick=function () {
+            for(var i =0;i<aLi.length;i++){
+                oDiv[i].style.display = 'none';
+            }
+            oDiv[(this.index)-1].style.display = 'block';
+        }
+    </script>
+
+
+</body>
+</html>
