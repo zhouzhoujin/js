@@ -47,7 +47,8 @@
 
     <script>
         var oFMenu = document.getElementById('F-menu');
-        var oMenu = oFMenu.getElementsByTagName('li');
+        var oMenu = oFMenu.getElementsByClassName("menu");
+
         document.oncontextmenu = function (ev) {
             ev = ev || window.event;
             oFMenu.style.display='block';
@@ -57,6 +58,7 @@
         }
         document.onclick = function (ev) {
             ev = ev ||window.event;
+            2
             oFMenu.style.display='none';
         }
         for(var i = 0;i<oMenu.length;i++)
