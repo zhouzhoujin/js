@@ -92,9 +92,11 @@
         var aUl = oCon.getElementsByTagName('ul');
         var aLi = aUl[0].getElementsByTagName('li');
         var aLi2 = aUl[1].getElementsByTagName('li');
+        var iNow = 0;
         for(var i=0;i<aLi.length;i++) {
             aLi[i].index = i;
-            aLi[i].onclick = function () {
+            aLi[i].onclick = function() {
+                iNow = this.index;//作为返回当前的位置
                 for (var i = 0; i < aLi.length; i++) {
                     aLi[i].className = '';
                     oDiv[i].style.display = 'none';
@@ -102,20 +104,35 @@
                 oDiv[this.index].style.display = 'block';
             }
         }
-
-        oDiv = setInterval(function(){
-            if（a>=5）{
-                clearInterval(timer);清除定时器
-                console.log（a++）；
+        oCon.onmouseover = function () {
+            clearInterval(timer);
+        };
+        oCon.onmouseout = function () {
+            play();
+        };
+        function play(){
+            timer = setInterval(function(){
+                aLi2[1].onclick();
+            },1000);
+        }
+        play();
+        aLi2[0].onclick = aLi2[1].onclick = function () {
+            if(this === aLi2[0]){
+                iNow--;
+                if(iNow == -1){
+                    iNow =oDiv.length-1;
+                }
+            }else{
+                iNow++;
+                if(iNow == oDiv.length){
+                    iNow = 0;
+                }
             }
-        },1000ms);
-        var oCon1 = document.getElementById('container');
-        var oClass = oCon1.getElementsByClassName('first');
-        aLi2[0].onclick=function () {
-            for(var i =0;i<aLi.length;i++){
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
                 oDiv[i].style.display = 'none';
             }
-            oDiv[(this.index)-1].style.display = 'block';
+            oDiv[iNow].style.display = 'block';
         }
     </script>
 
