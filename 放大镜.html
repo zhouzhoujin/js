@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            position: relative;
+        }
+        #small-box,#small-box img{
+            width: 400px;
+            margin-left: 50px;
+        }
+        #bor-small{
+            position: absolute;
+            width: 400px;
+            height: 304px;
+            margin-left: 100px;
+        }
+        #big-box{
+            position:absolute;
+            top: 50px;
+            left: 600px;
+            height: 304px;
+            /*display:none;*/
+            width: 400px;
+            overflow: hidden;
+        }
+        #big-box img{
+            position: absolute;
+
+        }
+        #container .float-box{
+            width: 160px;
+            height: 120px;
+            border: 1px solid;
+            opacity: 0.5;
+            background: white;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="float-box"></div>
+        <div id="bor-small"></div>
+        <div id="small-box">
+            <img src="img/img1.jpg" alt="">
+        </div>
+        <div id="big-box">
+            <img src="img/img1.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var sBox = document.getElementById('small-box');
+        var fBox = document.getElementsByClassName('float-box');
+        var bBox = document.getElementById('big-box');
+        var bSma = document.getElementById('bor-small');
+        var oImg = bBox.getElementsByTagName('img');
+        bSma.onmouseover = function () {
+            fBox[0].style.display = 'block';
+            bBox.style.display = 'block';
+
+        }
+        bSma.onmouseout = function () {
+            fBox[0].style.display = 'none';
+            bBox.style.display = 'none';
+        }
+        bSma.onmousemove= function (ev) {
+            var left = ev.clientX - fBox[0].offsetWidth/2;
+            var top = ev.clientY - fBox[0].offsetHeight/2;
+            if(left<100) {
+                left = 100;
+            }if(left>339){
+                left = 339;
+            }
+            if(top<40) {
+                top = 0;
+            }if(top>178){
+                top = 178;
+            }
+                fBox[0].style.left= left+"px";
+                fBox[0].style.top= top+"px";
+                var pencentX = (left-100)/(bSma.offsetWidth);
+                var pencentY = top/(bSma.offsetHeight);
+                // if(left<140){
+                //     oImg[0].style.left = 0;
+                // }else{
+                    oImg[0].style.left = -pencentX*(oImg[0].offsetWidth) + 'px';
+                // }
+                // if(top<40){
+                //     oImg[0].style.top = 0;
+                // }else {
+                    oImg[0].style.top = -pencentY*(oImg[0].offsetHeight) + 'px';
+                // }
+
+
+
+        }
+
+    </script>
+</body>
+</html>
