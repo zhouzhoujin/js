@@ -42,8 +42,15 @@
             border-radius: 50%;
             line-height:14px ;
             text-align: center;
-            float: left;
+            position: absolute;
             cursor: pointer;
+            z-index: 2;
+        }
+        #container .nav li:nth-child(2){
+            margin-left: 17px;
+        }
+        #container .nav li:nth-child(3){
+            margin-left: 34px;
         }
         #container .nav-l{
             margin-left:5px;
@@ -62,12 +69,22 @@
             position: absolute;
             cursor: pointer;
             margin-top: 20px;
+            z-index: 2;
         }
         #container .nav-l li:nth-child(2){
             margin-left: 18px;
         }
         #container .first{
             display: block;
+            z-index: 1;
+        }
+        #container .nav .first-s{
+            background: #ff3400;
+            width: 14px;
+            height: 14px;
+            font-size: 14px;
+            color: white;
+            margin-left: 2px;
         }
     </style>
 </head>
@@ -77,7 +94,7 @@
         <div><img src="img/img2.jpg" alt=""></div>
         <div><img src="img/img3.jpg" alt=""></div>
         <ul class="nav">
-            <li>1</li>
+            <li class="first-s">1</li>
             <li>2</li>
             <li>3</li>
         </ul>
@@ -97,12 +114,30 @@
             aLi[i].index = i;
             aLi[i].onclick = function() {
                 iNow = this.index;//作为返回当前的位置
-                for (var i = 0; i < aLi.length; i++) {
-                    aLi[i].className = '';
-                    oDiv[i].style.display = 'none';
-                }
-                oDiv[this.index].style.display = 'block';
+               fff();
             }
+        }
+        aLi2[0].onclick = aLi2[1].onclick = function () {
+            if(this === aLi2[0]){
+                iNow--;
+                if(iNow == -1){
+                    iNow =oDiv.length-1;
+                }
+            }else{
+                iNow++;
+                if(iNow == oDiv.length){
+                    iNow = 0;
+                }
+            }
+            fff();
+        }
+        function fff() {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+                oDiv[i].style.display = 'none';
+            }
+            oDiv[iNow].style.display = 'block';
+            aLi[iNow].className = 'first-s';
         }
         oCon.onmouseover = function () {
             clearInterval(timer);
@@ -116,24 +151,6 @@
             },1000);
         }
         play();
-        aLi2[0].onclick = aLi2[1].onclick = function () {
-            if(this === aLi2[0]){
-                iNow--;
-                if(iNow == -1){
-                    iNow =oDiv.length-1;
-                }
-            }else{
-                iNow++;
-                if(iNow == oDiv.length){
-                    iNow = 0;
-                }
-            }
-            for (var i = 0; i < aLi.length; i++) {
-                aLi[i].className = '';
-                oDiv[i].style.display = 'none';
-            }
-            oDiv[iNow].style.display = 'block';
-        }
     </script>
 
 
