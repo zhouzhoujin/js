@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            position: relative;
+            height: 500px;
+        }
+        #first{
+            position: relative;
+            margin: 0 auto;
+            width: 680px;
+            height:500px;
+
+        }
+        #first img{
+            height: 500px;
+        }
+        #first div{
+            text-align: center;
+            height: 500px;
+            width: 680px;
+            position: absolute;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        #nav{
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            z-index: 2;
+        }
+        #nav li{
+            width: 20px;
+            height: 5px;
+            background: #ff5300;
+            float: left;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        #nav .selected{
+            background: #cccccc;
+            opacity: .6;
+        }
+        #first .active{
+            z-index: 1;
+            opacity: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="first">
+            <div class="active"><img src="img/img1.jpg" alt=""></div>
+            <div><img src="img/img2.jpg" alt=""></div>
+            <div><img src="img/img3.jpg" alt=""></div>
+        </div>
+        <ul id="nav">
+            <li class="selected"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        var oCon = document.getElementById('container');
+        var oFi = document.getElementById('first');
+        var oDiv = oFi.getElementsByTagName('div');
+        var oImg = oFi.getElementsByTagName('img');
+        var oUl = document.getElementById('nav');
+        var oLi =oUl.getElementsByTagName('li');
+        var iNow=0;
+        var iN;
+        for(var i= 0;i<oLi.length;i++){
+            oLi[i].index = i;//索引！！！
+            oLi[i].onclick = function () {
+                iNow=this.index;
+                ff();
+            }
+        }
+        function ff() {
+            for (var j = 0; j < oLi.length; j++) {
+                oLi[j].className = '';
+                oDiv[j].className = '';
+            }
+            oLi[iNow].className = 'selected';
+            oDiv[iNow].className = 'active';
+        }
+        function play() {
+             iN=iNow;
+            timer=setInterval(function () {
+                    for (var j = 0; j < oLi.length; j++) {
+                        oLi[j].className = '';
+                        oDiv[j].className = '';
+                    }
+                iN = iN+1;
+                    if (iN == oLi.length) {
+                        iN=0;
+                    }
+                oLi[iN].className = 'selected';
+                oDiv[iN].className = 'active';
+            },1000)
+        }
+        play();
+        oFi.onmouseout = oUl.onmouseout= function () {
+            if (iN==oLi.length-1) {
+                iNow = -1;
+            }
+            play();
+        }
+        oFi.onmouseover = oUl.onmouseover = function () {
+            clearInterval(timer);
+        }
+    </script>
+</body>
+</html>

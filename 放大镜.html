@@ -10,23 +10,26 @@
         }
         #container{
             position: relative;
+            /*margin-left: 50px;*/
         }
         #small-box,#small-box img{
             width: 400px;
+        }
+        #small-box{
             margin-left: 50px;
         }
         #bor-small{
             position: absolute;
             width: 400px;
             height: 304px;
-            margin-left: 100px;
+            margin-left: 50px;
         }
         #big-box{
             position:absolute;
             top: 50px;
             left: 600px;
             height: 304px;
-            /*display:none;*/
+            display:none;
             width: 400px;
             overflow: hidden;
         }
@@ -37,7 +40,7 @@
         #container .float-box{
             width: 160px;
             height: 120px;
-            border: 1px solid;
+            /*border: 1px solid;*/
             opacity: 0.5;
             background: white;
             position: absolute;
@@ -54,7 +57,7 @@
         </div>
         <div id="big-box">
             <img src="img/img1.jpg" alt="">
-        <!--</div>-->
+        </div>
     </div>
     <script>
         var sBox = document.getElementById('small-box');
@@ -65,7 +68,6 @@
         bSma.onmouseover = function () {
             fBox[0].style.display = 'block';
             bBox.style.display = 'block';
-
         }
         bSma.onmouseout = function () {
             fBox[0].style.display = 'none';
@@ -74,30 +76,23 @@
         bSma.onmousemove= function (ev) {
             var left = ev.clientX - fBox[0].offsetWidth/2;
             var top = ev.clientY - fBox[0].offsetHeight/2;
-            if(left<100) {
-                left = 100;
-            }if(left>339){
-                left = 339;
+            if(left<50) {
+                left = 50;
+            }if(left>289){
+                left = 289;
             }
             if(top<40) {
                 top = 0;
-            }if(top>178){
-                top = 178;
+            }if(top>182){
+                top = 182;
             }
-                fBox[0].style.left= left+"px";
-                fBox[0].style.top= top+"px";
-                var pencentX = (left-100)/(bSma.offsetWidth);
-                var pencentY = top/(bSma.offsetHeight);
-                // if(left<140){
-                //     oImg[0].style.left = 0;
-                // }else{
-                    oImg[0].style.left = -pencentX*(oImg[0].offsetWidth) + 'px';
-                // }
-                // if(top<40){
-                //     oImg[0].style.top = 0;
-                // }else {
-                    oImg[0].style.top = -pencentY*(oImg[0].offsetHeight) + 'px';
-                // }
+            fBox[0].style.left= left+"px";
+            fBox[0].style.top= top+"px";
+            var pencentX = (left-50)/(bSma.offsetWidth);
+            var pencentY = top/(bSma.offsetHeight);
+            oImg[0].style.left = -pencentX*(oImg[0].offsetWidth) + 'px';
+            oImg[0].style.top = -pencentY*(oImg[0].offsetHeight) + 'px';
+
 
 
 
