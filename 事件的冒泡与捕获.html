@@ -41,3 +41,17 @@
     var oDiv3 = document.getElementById('div3');
     var oBody = document.getElementById('body');
     var oHtml = document.getElementById('html');
+
+    oDiv1.addEventListener('click', function(e){
+        console.log('div1');
+        e.stopPropagation();
+    }, true);
+    oDiv2.addEventListener('click', function(e){
+        console.log('div2');
+        e.stopPropagation();
+    }, true);
+    oDiv3.addEventListener('click', function(e){
+        console.log('div3');
+        e.stopPropagation();
+    }, true);
+</script>
